@@ -1,0 +1,35 @@
+\documentclass[12pt, a4paper]{article}
+\author{\monauteur}
+\date{\madate}
+
+\input{../../../preambules/general}
+
+\usepackage[T1]{fontenc}
+\usepackage{tgbonum}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%-----Mise en page-----%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+ \geometry{
+	a4paper,
+	total={170mm,257mm},
+	left=10mm,
+	top=10mm,
+	right=10mm,
+}
+
+% Colonnes
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+\newcolumntype{Z}{>{\rightline\arraybackslash}X}
+\newcolumntype{b}{X}
+\newcolumntype{s}{>{\hsize=.2\hsize}X}
+\newcolumntype{m}{>{\hsize=.4\hsize}X}
+
+%% Numérotation des sections
+\renewcommand\thesection{\arabic{section}}
+
+%% Interlignes 
+\onehalfspacing
+
+\setlength{\droptitle}{-5em}

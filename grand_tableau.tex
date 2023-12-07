@@ -1,0 +1,52 @@
+\documentclass[12pt, a4paper]{extarticle}
+\author{}
+\date{}
+
+\usepackage[T1]{fontenc}
+\usepackage{tgbonum}
+
+\input{../../preambules/general}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%-----Mise en page-----%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+ \geometry{
+	a4paper,
+	total={170mm,257mm},
+	left=10mm,
+	top=20mm,
+	right=10mm,
+}
+
+%% Pieds de page et en-têtes
+\pagestyle{fancy}
+\fancyhead{} % clear all header fields
+\fancyhead[L]{Classe de \classe}
+\fancyhead[R]{\titre}
+\fancyfoot{} % clear all footer fields
+\fancyfoot[L]{Année 2023-2024}
+\fancyfoot[R]{Page \thepage \ sur \pageref{LastPage}}
+
+%% Colonnes
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+\newcolumntype{Z}{>{\rightline\arraybackslash}X}
+\newcolumntype{b}{X}
+\newcolumntype{s}{>{\hsize=.5\hsize}X}
+
+%% Numérotation des sections
+\renewcommand\thesection{\r \Roman{section}}
+\renewcommand\thesubsection{\b \alph{subsection}}
+
+\titleformat{\section}{\bfseries\large \r}{\thesection.}{1em}{\ul}
+
+\titleformat{\subsection}{\bfseries\large \b}{\thesubsection)}{1em}{\ul}
+
+\setlength{\fboxsep}{1.5ex}
+\setlength{\fboxrule}{1.5pt}
+
+
+%% Interligne
+\onehalfspacing
+\setlength{\droptitle}{-5em}
+

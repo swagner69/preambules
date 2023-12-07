@@ -1,0 +1,232 @@
+%%%%%%%%%%%%%%%%%%%
+%-----Paquets-----%
+%%%%%%%%%%%%%%%%%%%
+
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage{listing}
+\usepackage{amsmath, amsfonts, amssymb, amsthm}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{pagecolor}
+\usepackage[most,skins,breakable]{tcolorbox}
+\usepackage{extsizes} % Permet d'utiliser les tailles de 17 et 20 pt
+\usepackage{fancyhdr} % Faire des entêtes
+\usepackage{lastpage} % Avoir le nombre de page avec \pageref{Lastpage}
+\usepackage{soulutf8} % Pour surligner avec \hlc
+\usepackage{tabularx} % Pour de meilleurs tableaux
+\usepackage{pifont} % Pour utiliser des petits signes mignons
+\usepackage[export]{adjustbox} % \includegraphics[width=0.5\textwidth, right] 
+\usepackage{cellspace} 
+\usepackage[inline]{enumitem} % enumerate* pour énumérer en ligne
+\usepackage{setspace} % \doublespacing \onehalfspacing
+\usepackage{calligra} % Pour \mathcal correctement les C
+\usepackage{calrsfs} % Idem
+\usepackage{multicol} % Colonnes
+\usepackage{hyperref} % Lien hypertext
+\usepackage{titling} % Remonter le titre
+\usepackage{pdfpages}
+\usepackage{titlesec}
+\usepackage{multirow}
+\usepackage{pstricks-add}
+\usepackage{fp}
+\usepackage{xlop}
+\usepackage{svg}
+
+
+\usepackage{cleveref} % Référence aux thm 
+\setlength{\columnseprule}{0.5pt}
+\usepackage{catchfilebetweentags} % inclure juste des parties de fichier entree %<*tag> et %</tag>
+
+
+%%%%%%%%%%%%%%%%
+%-----Tikz-----%
+%%%%%%%%%%%%%%%%
+\usepackage{tkz-tab} % Tableau de variations*
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usetikzlibrary{shapes.misc}
+
+\tikzset{cross/.style={cross out, draw=black, minimum size=2*(#1-\pgflinewidth), inner sep=0pt, outer sep=0pt},
+	%default radius will be 5pt. 
+	cross/.default={5pt}}
+
+
+%%%%%%%%%%%%%%%%%%%%
+%-----Théorème-----%
+%%%%%%%%%%%%%%%%%%%%
+
+\theoremstyle{definition}
+\newtheorem{thm}{\r Théorème}
+\newtheorem{prop}{\r Propriété}
+\newtheorem{propal}{\r Proposition}
+\newtheorem{regle}{\r Règle}
+\newtheorem{meth}{Méthode}
+\newtheorem{dfn}{\r Définition}
+\newtheorem{rmq}{Remarque}
+\newtheorem{ex}{Exemple}
+\newtheorem{exo}{Exercice}
+
+\newcommand{\exemper}{\vskip 0.2cm\noindent{\noindent \bf \underline{Exemple \theexemple} : }\addtocounter{exemple}{1}}
+\crefname{exemple}{Exemple}{exemples}
+
+\newcommand{\methode}{\noindent \ul{\textbf{Méthode:}} }
+
+\newenvironment{colordef}{\textbf{\color{myr}{Définition : }}\color{myb}}{}
+
+%% Boite d'exemple
+
+\newtcolorbox{exemple}{
+	% breakable,
+	colback=white,
+	colframe=black,
+	enhanced,
+	attach boxed title to top left={xshift=5mm, yshift=-2mm},
+	boxed title style={size=small, colback=white, colframe=black, arc=0.5mm},
+	title=\textcolor{black}{Exemple \theexemple} \addtocounter{exemple}{1}, 
+	arc=3mm,
+}
+
+% Macro pour les exercices et leur numérotation  
+\newcounter{exemple}
+\setcounter{exemple}{1}
+
+\newcommand{\raisedrule}[2][0em]{\leaders\hbox{\rule[#1]{1pt}{#2}}\hfill}
+
+\newcounter{countexo}
+\setcounter{countexo}{1}
+\newcommand{\exercice}{\vskip 0.2cm\noindent{ \bf \ \underline{Exercice \thecountexo :}}\addtocounter{countexo}{1}}
+
+\newcounter{numexo}
+\setcounter{numexo}{1}
+\newcommand{\exerciceDS}[1]{\vskip 0.6cm\noindent\rule[+2pt]{1cm}{0.5pt}\ {\large\bf \ Exercice \thenumexo {  #1 }}\raisedrule[+2pt]{0.5pt}\null\addtocounter{numexo}{1}\par \vskip 0,4cm}
+
+%%%%%%%%%%%%%%%%%%%
+%-----Macros-----%
+%%%%%%%%%%%%%%%%%%%
+
+
+%% Couleurs
+\definecolor{myb}{RGB}{10, 70, 93}
+\definecolor{myg}{RGB}{0, 169, 51}
+\definecolor{myr}{RGB}{218, 41, 26}
+\definecolor{mybeige}{RGB}{255, 238, 208}
+\definecolor{myrl}{RGB}{204, 102, 102}
+\definecolor{mygris}{RGB}{230, 236, 238}
+\definecolor{myjaune}{RGB}{255, 217, 102}
+\definecolor{mygreen}{RGB}{121, 172, 120}
+\renewcommand{\b}{\color{myb}}
+\renewcommand{\r}{\color{myr}}
+\newcommand{\ver}{\color{mygreen}}
+\newcommand{\para}{\slash \slash}
+
+\sethlcolor{myjaune}
+\setul{0.5ex}{0.2ex}
+\setulcolor{myr}
+
+\newcommand\mover[1]{{\ver #1}}
+
+%% Difficultés des exercices
+\newcommand{\unet}{\ding{102} }
+\newcommand{\deuxet}{\ding{102}\ding{102} }
+\newcommand{\troiset}{\ding{102}\ding{102}\ding{102} }
+
+%% Savoir-faire
+\newcounter{numsf}
+\setcounter{numsf}{1}
+\newcommand\sfper[1]{\noindent {\color{black} \textbf{SF0\numchap.\thenumsf} - #1.} \addtocounter{numsf}{1}}
+
+
+%% Raccourcis de commandes mathématiques
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Ca}{\mathcal{C}}
+
+\newcommand{\lra}{\Leftrightarrow}
+\newcommand{\ora}{\overrightarrow}
+
+\newcommand\coord[2]{\begin{pmatrix}
+ #1 \\
+ #2
+\end{pmatrix}}
+
+\newcommand{\norme}[1]{\left\Vert #1\right\Vert}
+\newcommand{\abs}[1]{\left\lvert#1\right\rvert}
+
+\newcommand{\intervalleoo}[2]{\mathopen{]}#1\,;#2\mathclose{[}}
+\newcommand{\intervalleff}[2]{\mathopen{[}#1\,;#2\mathclose{]}}
+\newcommand{\intervalleof}[2]{\mathopen{]}#1\,;#2\mathclose{]}}
+\newcommand{\intervallefo}[2]{\mathopen{[}#1\,;#2\mathclose{[}}
+\newcommand{\intervalle}[2]{\mathopen{(}#1\,;#2\mathclose{)}}
+
+%% Droites graduées
+%\droite gradu\'ee{Nb de divisions de la longueur unit\'e}{longueur axe}
+\newcommand{\droite}[2]{
+	\psline{->}(0,0)(#2,0)
+	\FPdiv{\division}{1}{#1}%Variable pour la division de la longueur Unit\'e.
+	\FPmul{\produit}{#1}{#2}%Variable pour les graduations sur toute la longueur de l'axe.
+	\FPclip{\produit}{\produit}%Supression des z\'eros inutiles.
+	\multido{\r=0+\division}{\produit}%Boucle PsTricks
+	{
+		\psline(\r,-0.075)(\r,0.075)
+	}
+}
+
+%\droite gradu\'ee avec nombres{Nb de divisions de la longueur unit\'e}{longueur axe}
+\newcommand{\droitenombres}[2]{
+	\psline{->}(0,0)(#2,0)
+	\FPdiv{\division}{1}{#1}
+	\FPmul{\produit}{#1}{#2}
+	\FPclip{\produit}{\produit}
+	\multido{\r=0+\division}{\produit}
+	{
+		\psline(\r,-0.075)(\r,0.075)
+	}
+	\multido{\i=0+1}{#2}{
+		\psline[linewidth=0.03](\i,-0.15)(\i,0.15)
+		\rput(\i,0.35){\i}}
+}
+
+%\droite gradu\'ee avec nombres{Nb de divisions de la longueur unit\'e}{longueur axe}{nb d\'epart}
+\newcommand{\droitenombresorigine}[3]{
+	\psline{->}(0,0)(#2,0)
+	\FPdiv{\division}{1}{#1}
+	\FPmul{\produit}{#1}{#2}
+	\FPclip{\produitentier}{\produit}
+	\multido{\r=0+\division}{\produitentier}
+	{
+		\psline(\r,-0.075)(\r,0.075)
+	}
+	
+	\FPset{\nbchoisi}{#3}
+	\multido{\i=0+1}{#2}{
+		\psline[linewidth=0.03](\i,-0.15)(\i,0.15)
+		\rput(\i,0.35){\nbchoisi}
+		\FPadd{\nbchoisi}{1}{\nbchoisi}
+		\FPclip{\nbchoisi}{\nbchoisi}
+	}
+}
+
+
+%\droite gradu\'ee avec nombres{Nb de divisions de la longueur unit\'e}{longueur axe}{nb d\'epart}{pas}
+\newcommand{\droitenombresoriginepas}[4]{
+	\psline{->}(0,0)(#2,0)
+	\FPdiv{\division}{1}{#1}
+	\FPmul{\produit}{#1}{#2}
+	\FPclip{\produitentier}{\produit}
+	\multido{\r=0+\division}{\produitentier}
+	{
+		\psline(\r,-0.075)(\r,0.075)
+	}
+	\FPset{\nbchoisi}{#3}
+	\multido{\i=0+1}{#2}{
+		\psline[linewidth=0.03](\i,-0.15)(\i,0.15)
+		\rput(\i,0.35){\nbchoisi}
+		\FPadd{\nbchoisi}{#4}{\nbchoisi}
+		\FPclip{\nbchoisi}{\nbchoisi}
+	}
+}
